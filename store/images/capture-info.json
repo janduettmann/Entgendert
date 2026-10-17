@@ -1,0 +1,10 @@
+{
+  "browser": "152.0.7977.82",
+  "extensionVersion": "0.1.0",
+  "viewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "source": "store/demo.html",
+  "description": "Actual extension loaded in an isolated Chromium profile. Original captured via popup disable; reading view via popup enable. Input protection asserted."
+}
