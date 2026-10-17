@@ -24,8 +24,10 @@ Beispiele:
 - Student_innen → Studenten
 - Ärzt*innen → Ärzte
 - mit den Paketzusteller*innen → mit den Paketzustellern
+- ein*e Kolleg*in → ein Kollege
+- der*die Vorsitzende → der Vorsitzende
 - Lehrerinnen und Lehrer → Lehrer
-- Studierende → Studenten
+- die Mitarbeitenden → die Mitarbeiter
 
 Du entscheidest, welche Regeln aktiv sind: Paarformen und ausgewählte
 Partizipformen lassen sich einzeln abschalten. Entgendert kann außerdem global
@@ -39,9 +41,9 @@ und keine Datenübertragung durch die Erweiterung. Einstellungen und
 deaktivierte Hostnamen werden ausschließlich lokal gespeichert.
 
 Grenzen transparent erklärt: Die Erkennung basiert auf einem Wörterbuch mit
-rund 4.500 Personenbezeichnungen aus Wiktionary und wenigen allgemeinen Regeln
-für Zusammensetzungen und Wörter auf -er. Andere unbekannte Wörter bleiben
-unverändert. Es handelt sich
+rund 4.500 Personenbezeichnungen aus Wiktionary und daraus gelernten Regeln für
+Zusammensetzungen und Wortendungen. Artikel wie „der*die“ oder „ein*e“ werden
+angepasst. Unsichere Fälle bleiben unverändert. Es handelt sich
 nicht um eine vollständige deutsche Grammatikprüfung; Artikel und Satzbau
 werden nicht umfassend angepasst. Die optionalen Partizip-Ersetzungen können
 die Bedeutung verändern. Browser-Systemseiten, PDF-Viewer, eingebettete Frames

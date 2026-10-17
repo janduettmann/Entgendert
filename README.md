@@ -17,8 +17,9 @@ Quelldateien gebaut.
 | mit den Bürger*innen | mit den Bürgern |
 | Zahnärzt:innen, Stammkund*innen | Zahnärzte, Stammkunden |
 | Vorsitzende*r, Angestellte:n | Vorsitzender, Angestellten |
-| Lehrerinnen und Lehrer | Lehrer |
-| Studierende | Studenten |
+| ein*e Kolleg*in, der*die Vorsitzende | ein Kollege, der Vorsitzende |
+| Lehrerinnen und Lehrer, die Lehrerin oder der Lehrer | Lehrer, der Lehrer |
+| Studierende, die Mitarbeitenden | Studenten, die Mitarbeiter |
 
 Paarformen und Partizipformen sind standardmäßig aktiv und im Popup separat
 abschaltbar. Die Website-Ausnahme gilt für den exakten Hostnamen (beispielsweise
@@ -59,10 +60,9 @@ dass keine Daten gesammelt werden, gemäß der
 
 ## Erkennung und Grenzen
 
-Die Erkennung kombiniert ein Wörterbuch mit wenigen allgemeinen Regeln.
-Unterstützt werden `*`, `:`, `_`, `/`, `/-`, `·`, `,`, Klammern und Binnen-I
-sowie passende Plural-Paarformen mit „und“, „oder“ oder „&“. Die Zeichen müssen
-direkt zwischen Wortstamm und Endung stehen; normale Zeichensetzung wie
+Die Erkennung kombiniert ein Wörterbuch mit allgemeinen Regeln. Unterstützt
+werden `*`, `:`, `_`, `/`, `/-`, `·`, `,`, Klammern und Binnen-I. Die Zeichen
+müssen direkt zwischen Wortstamm und Endung stehen; normale Zeichensetzung wie
 „Lehrer, innen und außen“ bleibt unverändert. Reguläre feminine Formen wie
 „Lehrerinnen“ bleiben alleine unverändert.
 
@@ -71,33 +71,47 @@ direkt zwischen Wortstamm und Endung stehen; normale Zeichensetzung wie
    `Beamt:innen` → „Beamte“ (nach „die“: „Beamten“).
 2. **Zusammensetzungen:** Unbekannte Komposita werden über ihren bekannten
    letzten Wortteil umgewandelt, etwa `Stammkund*innen` → „Stammkunden“.
-3. **Wörter auf -er:** Sie sind fast immer regelmäßig, deshalb werden auch
-   unbekannte markierte Formen umgewandelt: `Influencer*innen` → „Influencer“.
-4. **Substantivierte Adjektive und Pronomen:** `Vorsitzende*r` → „Vorsitzender“,
-   `Angestellte:n` → „Angestellten“, `jede*r` → „jeder“, `eine*n` → „einen“.
+3. **Endungsregeln:** Für unbekannte Wörter lernt das Generator-Skript aus dem
+   Wörterbuch, welche Endungen sich zuverlässig verhalten, etwa „-ist“ →
+   „-isten“, „-log“ → „-loge/-logen“ oder „-er“ → unverändert. Die 42 Regeln
+   stimmen bei 98,8 % der Wörterbucheinträge. Gemischte Endungen wie „-ier“
+   (Offiziere, aber Algerier) werden gesperrt statt geraten.
+4. **Artikel, Begleiter und Pronomen:** `der*die` → „der“, `den/die` → „den“,
+   `ein*e` → „ein“, `eine/n` → „einen“, `jede*r` → „jeder“, `Ihr*e` → „Ihr“,
+   `sie/er` → „er“, `seine/ihre` → „seine“. Danach richten sich schwache Formen:
+   `der*die Vorsitzende*r` → „der Vorsitzende“, `dem Kolleg*in` → „dem Kollegen“.
+   „der/die/das“ und „er/sie/es“ bleiben stehen.
+5. **Substantivierte Adjektive:** `Vorsitzende*r` → „Vorsitzender“,
+   `Angestellte:n` → „Angestellten“.
+6. **Paarformen** (abschaltbar): „Lehrerinnen und Lehrer“, „Schülerinnen/Schüler“,
+   „die Lehrerin oder der Lehrer“ und „der oder die Vorsitzende“ werden zur
+   männlichen Form. Singular-Paare mit „und“ („die Lehrerin und der Lehrer“)
+   bleiben stehen, weil sie zwei Personen meinen können.
 
 Vorsichtsregeln gegen Fehltreffer: Formen mit Komma (`Lehrer,innen`) und
 kleingeschriebene Wörter werden nur bei bekannten Wörtern umgewandelt, damit
 Tippfehler wie „aber,in Berlin“ stehen bleiben. `/n` und `(n)` kennzeichnen oft
 optionale Plurale („Seite(n)“, „Anlage/n“); sie werden nur bei bekannten
-substantivierten Adjektiven wie `Angestellte(n)` umgewandelt. Unbekannte Wörter,
-die nicht auf -er enden, bleiben unverändert. Artikel wie „ein*e“ oder
-„der*die“ werden nicht angepasst.
+substantivierten Adjektiven und Begleitern wie `Angestellte(n)` oder `eine(n)`
+umgewandelt. Ein Binnen-I im Singular steckt oft in Produktnamen („PlugIn“);
+dort werden unbekannte Wörter nur auf „-er“ umgewandelt.
 
-Die zusätzliche Partizipregel erkennt `Studierende`, `Studierenden`,
-`Studierender`, `Mitarbeitende`, `Teilnehmende`, `Lesende` und `Lehrende`.
-Kleingeschriebene Adjektive wie „studierende Kinder“ bleiben stehen. Einfache
-weibliche Singular-Kontexte wie „eine Studierende“ werden ausgelassen.
-**Partizipien können eine andere Bedeutung haben**: Ein Lehrender ist nicht
-zwangsläufig ein Lehrer. Diese Option kann deshalb ausgeschaltet werden.
+Die Partizipregel (abschaltbar) wandelt 31 neutrale Partizipien in die
+entsprechende Personenbezeichnung um, etwa `Studierende` → „Studenten“,
+`die Mitarbeitenden` → „die Mitarbeiter“, `dem Teilnehmenden` → „dem
+Teilnehmer“, auch in Zusammensetzungen wie `Kursteilnehmende`. Diese Liste ist
+bewusst ausgewählt und nicht aus Daten abgeleitet: Eine allgemeine Regel
+„-ende“ → „-er“ würde „Blutende“ zu „Bluter“, „Führende“ zu „Führer“ und „das
+Entscheidende“ zu „das Entscheider“ machen. Die gebeugten Formen kommen aus dem
+Wörterbuch. Weibliche Singular-Kontexte wie „die Studierende“ oder „einer
+Studierenden“ bleiben stehen. **Partizipien können eine andere Bedeutung
+haben**: Ein Lehrender ist nicht zwangsläufig ein Lehrer.
 
-Keine vollständige Grammatikgarantie: Artikel, Pronomen, Adjektive, Genitiv,
-schwache Singular-Deklination und mehrdeutige Satzkontexte werden nicht umfassend
-umformuliert. Beispielsweise bleibt „eine Lehrer:in“ grammatisch problematisch,
-und ein Dativ ohne lokale Hinweise kann unerkannt bleiben. Plural-Dativ wird
-nur aus einfachen benachbarten Hinweisen wie „mit den“ oder „den“ abgeleitet.
-Paarformen mit wiederholten Artikeln („die Lehrerinnen und die Lehrer“) und
-über mehrere HTML-Textknoten verteilte Wörter bleiben unverändert.
+Keine vollständige Grammatikgarantie: Genitive im Singular („des Lehrer*in“),
+Adjektive vor dem Nomen („die neue Lehrer:in“) und mehrdeutige Satzkontexte
+werden nicht umfassend umformuliert. Der Dativ Plural wird nur aus einfachen
+benachbarten Hinweisen wie „mit den“ oder „den“ abgeleitet. Über mehrere
+HTML-Textknoten verteilte Wörter bleiben unverändert.
 
 Weitere Grenzen:
 

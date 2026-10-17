@@ -42,6 +42,7 @@ test.beforeEach(async () => {
 test("Echte Erweiterung: Wörterbuch, Paarformen, DOM-Struktur und geschützte Bereiche", async () => {
   await expect(page.locator("#pair")).toHaveText("Ärzte helfen.");
   await expect(page.locator("#dative")).toHaveText("Mit den Bürgern sprechen.");
+  await expect(page.locator("#articles")).toHaveText("Ihr Ansprechpartner ist der Vorsitzende; die Mitarbeiter helfen.");
   await expect(page.locator("#lexicon")).toHaveText("Vorsitzender Meier begrüßt Zahnärzte und Stammkunden auf Seite(n) 3.");
   await expect(page.locator("#unmarked")).toHaveText("Lehrerinnen und Schüler sprechen über Berlin.");
   await expect(page.locator("#structure strong")).toHaveText("Lehrer");

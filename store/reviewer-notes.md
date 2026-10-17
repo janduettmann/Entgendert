@@ -60,8 +60,9 @@ optional and uses Playwright/Chromium (`npm run store:assets`).
 ## Limitations
 
 The dictionary covers about 4,500 person nouns. Unknown compounds use their
-last known part, and unknown marked words ending in "-er" are treated as
-regular; other unknown words are intentionally left alone. This is not a full German grammar engine; participle substitutions can
+last known part; other unknown words use ending rules learned from the
+dictionary (e.g. "-ist" → "-isten"), and ambiguous endings are left alone.
+Gendered articles and pronouns ("der*die", "ein*e") are resolved as well. This is not a full German grammar engine; participle substitutions can
 change meaning and are separately configurable. Frames, shadow DOM, browser
 pages and PDF viewers are not processed. Individual text nodes over 50,000
 characters are skipped to limit main-thread work.
