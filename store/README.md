@@ -2,17 +2,18 @@
 
 ## Dateien für den Upload
 
-Alles zusammen: `artifacts/entgendert-0.1.0-store-kit.zip`. Dieses Archiv zuerst
+Alles zusammen: `artifacts/entgendert-<version>-store-kit.zip`. Dieses Archiv zuerst
 entpacken; im Store ausschließlich das jeweilige enthaltene Browser-ZIP
 hochladen, nicht das gesamte Store-Kit. Die folgenden Pfade beziehen sich auf
 das Repository; im Store-Kit liegen die Browser-ZIPs unter `chrome/` und
 `firefox/`, die Icons unter `icons/` und die Datenschutzseite als `privacy.html`.
+`<version>` ist die Version aus `extension/manifest.json`, zurzeit 0.3.0.
 
 | Zweck | Datei |
 | --- | --- |
-| Chrome-Erweiterung | `artifacts/chrome/entgendert-0.1.0-chrome.zip` |
-| Firefox-Erweiterung | `artifacts/firefox/entgendert-0.1.0-firefox.zip` |
-| Optionaler Quellcode für Reviewer | `artifacts/entgendert-0.1.0-source.zip` |
+| Chrome-Erweiterung | `artifacts/chrome/entgendert-<version>-chrome.zip` |
+| Firefox-Erweiterung | `artifacts/firefox/entgendert-<version>-firefox.zip` |
+| Quellcode für Reviewer (bei Mozilla mit hochladen, weil `dictionary.js` erzeugt wird) | `artifacts/entgendert-<version>-source.zip` |
 | Chrome-Icon / allgemeines Store-Icon | `extension/icons/icon-128.png` |
 | Zusätzliches großes Icon | `extension/icons/icon-256.png` |
 | Chrome-Werbegrafik, 440 × 280 | `store/images/promo-440x280.png` |

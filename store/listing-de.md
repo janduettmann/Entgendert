@@ -1,6 +1,6 @@
 # Fertige Store-Texte
 
-Die folgenden Texte beziehen sich auf Version 0.1.0. Titel und Kurzbeschreibung
+Die folgenden Texte beziehen sich auf Version 0.3.0. Titel und Kurzbeschreibung
 können in beiden Stores verwendet werden. Bei abweichenden Formularbezeichnungen
 die inhaltlich passenden Felder auswählen.
 
@@ -113,6 +113,18 @@ erreichbare Adresse ins Store-Formular übernehmen.
   behaupten, solange diese nicht getestet wurde
 - Support-E-Mail und Herausgeberprofil: mit den eigenen, erreichbaren und
   bestätigten Kontaktdaten ausfüllen
+
+## Versionshinweise 0.3.0
+
+Neues Design und neues Logo. Das Popup zeigt jetzt, wie viele Wörter auf der
+aktuellen Seite ersetzt wurden, und aktualisiert die Zahl live. Ist die
+Leseansicht ausgeschaltet, sind die übrigen Einstellungen gesperrt.
+
+## Versionshinweise 0.2.0
+
+Deutlich bessere Erkennung: Wörterbuch mit rund 4.500 Personenbezeichnungen
+aus Wiktionary, Artikel und Pronomen (der*die, ein*e), substantivierte
+Adjektive (Vorsitzende*r), Paarformen mit Artikeln und mehr Partizipien.
 
 ## Versionshinweise 0.1.0
 

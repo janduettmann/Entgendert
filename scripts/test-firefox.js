@@ -66,13 +66,18 @@ try {
     if (driverError) throw driverError;
     return log.includes(`Listening on 127.0.0.1:${port}`);
   }, "geckodriver start");
-  const created = await command("POST", "/session", { capabilities: { alwaysMatch: {
+  const start = (args) => command("POST", "/session", { capabilities: { alwaysMatch: {
     browserName: "firefox",
     "moz:firefoxOptions": {
-      binary: process.env.FIREFOX_PATH || firefox.executablePath(), args: ["-headless", "--remote-allow-system-access"],
+      binary: process.env.FIREFOX_PATH || firefox.executablePath(), args,
       prefs: { "extensions.webextensions.uuids": JSON.stringify({ "entgendert@jandu.github": uuid }) }
     }
   } } });
+  // geckodriver 0.37+ passes the system access flag itself and rejects it here.
+  const created = await start(["-headless", "--remote-allow-system-access"]).catch((error) => {
+    if (!error.message.includes("can't be set via capabilities")) throw error;
+    return start(["-headless"]);
+  });
   sessionId = created.sessionId;
   const id = await session("POST", "/moz/addon/install", {
     path: fileURLToPath(new URL("dist/firefox/", root)), temporary: true
@@ -84,6 +89,10 @@ try {
     await expectText("regular", "Lehrer treffen Studenten und Studenten.");
     await expectText("pair", "Ärzte helfen.");
     await expectText("dative", "Mit den Bürgern sprechen.");
+  });
+  await check("Dictionary forms, articles and pronouns", async () => {
+    await expectText("articles", "Ihr Ansprechpartner ist der Vorsitzende; die Mitarbeiter helfen.");
+    await expectText("lexicon", "Vorsitzender Meier begrüßt Zahnärzte und Stammkunden auf Seite(n) 3.");
   });
   await check("Editors, code, inputs and foreign language preserved", async () => {
     for (const id of ["editor", "textbox", "code", "ignored", "translation", "english"]) await expectText(id, "Lehrer:innen");
@@ -100,8 +109,29 @@ try {
   await switchTo(extensionTab.handle);
   await navigate(popup);
   await eventually(() => execute("return document.getElementById('enabled') && !document.getElementById('enabled').disabled"), "Popup ready");
+  // Opened as a tab, the popup has no activeTab grant; listen to every tab instead.
+  // WebDriver scripts run in separate sandboxes, so the latest count is kept in the DOM.
+  await execute(`return browser.tabs.query({}).then((tabs) => { for (const tab of tabs) {
+      const port = browser.tabs.connect(tab.id, { name: "entgendert:status" });
+      port.onMessage.addListener((message) => { document.documentElement.dataset.replaced = message.replaced; });
+      port.onDisconnect.addListener(() => void browser.runtime.lastError);
+    } });`);
+  const expectCount = (expected) => eventually(async () => (await execute("return document.documentElement.dataset.replaced")) === String(expected), `${expected} words replaced`);
+  await check("Word counter updates live", async () => {
+    // 17 on the fixture page plus 4 from the dynamic separator variants.
+    await expectCount(21);
+    await execute("document.getElementById('pairs').click()");
+    await expectCount(19);
+    await execute("document.getElementById('pairs').click()");
+    await expectCount(21);
+  });
   await check("Popup disables and restores original text", async () => {
     await execute("document.getElementById('enabled').click()");
+    await expectCount(0);
+    await eventually(() => execute("return document.getElementById('details').disabled && document.getElementById('pairs').matches(':disabled')"), "Options locked");
+    assert.equal(await execute("return document.getElementById('count').textContent"), "–");
+    await execute("document.getElementById('pairs').click()");
+    assert.equal(await execute("return document.getElementById('pairs').checked"), true);
     await switchTo(articleHandle);
     await expectText("regular", "Lehrer:innen treffen Student*innen und Studierende.");
   });
