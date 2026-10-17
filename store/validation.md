@@ -1,20 +1,26 @@
-# Prüfstand für Entgendert 0.1.0
+# Prüfstand für Entgendert 0.3.0
 
-Lokal geprüft am 13. Oktober 2026:
+Lokal geprüft am 17. Oktober 2026:
 
-- Text-Engine: 74 Tests erfolgreich, einschließlich Schreibvarianten,
-  Flexionen und unveränderter Gegenbeispiele.
-- Chromium 152.0.7977.82: sieben Tests mit der tatsächlich installierten
-  Erweiterung erfolgreich; DOM-Erhalt, geschützte Inhalte, dynamische Updates,
-  Wiederherstellung, Optionen und ein Schub von 2.500 Textknoten.
-- Firefox 157.0 (Playwright-Testbrowser), geckodriver 0.36.0: sechs Prüfungen mit
-  dem tatsächlich temporär installierten Add-on erfolgreich; Textregeln,
-  geschützte Inhalte, dynamische Texte/Trennzeichen, Popup-Aus-/Einschalten
+- Text-Engine: 326 Tests erfolgreich, einschließlich Wörterbuchformen,
+  Artikeln und Pronomen, Paarformen, Endungsregeln, Partizipien und
+  unveränderter Gegenbeispiele. Beim Erzeugen des Wörterbuchs wird jeder
+  Eintrag gegen die Engine geprüft.
+- Chromium 152.0.7977.82: neun Tests mit der tatsächlich installierten
+  Erweiterung erfolgreich; Wörterbuchformen, DOM-Erhalt, geschützte Inhalte,
+  dynamische Updates, Wiederherstellung, Optionen, gesperrte Einstellungen im
+  ausgeschalteten Zustand, Wortzähler mit Live-Aktualisierung und ein Schub
+  von 2.500 Textknoten.
+- Firefox 146.0.1 (Playwright-Testbrowser), geckodriver 0.36.0 und 0.37.1: acht
+  Prüfungen mit dem tatsächlich temporär installierten Add-on erfolgreich;
+  Textregeln, Wörterbuchformen und Artikel, geschützte Inhalte, dynamische
+  Texte/Trennzeichen, Wortzähler, gesperrte Einstellungen, Popup-Aus-/Einschalten
   sowie über einen Reload persistierende Website-Ausnahme.
 - Mozilla addons-linter: keine Fehler, Warnungen oder Hinweise.
 - Paketprüfung: Manifest-Versionen, Ressourcen, aktuelle Quelldateien,
   PNG-Abmessungen, Icon-Verweise, Lizenz und Quellcodearchiv geprüft.
-- Store-Grafiken und die aktivierte Leseansicht visuell kontrolliert.
+- Store-Grafiken, das Popup in hellem und dunklem Modus und die aktivierte
+  Leseansicht visuell kontrolliert.
 
 Das belegt die aufgeführten Fälle in diesen Browser-Versionen. Es ist keine
 Garantie für jede Website, jede deutsche Formulierung, ältere unterstützte

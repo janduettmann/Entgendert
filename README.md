@@ -5,7 +5,7 @@ Genderformen in eine persönliche Leseansicht im generischen Maskulinum umwandel
 Kein Server, keine KI-API, keine Laufzeit-Abhängigkeiten. Code MIT-lizenziert,
 Wörterbuchdaten aus Wiktionary unter CC BY-SA 4.0 (siehe [Wörterbuch](#wörterbuch)).
 
-**Status: erste testbare Version (0.1.0).** Regelbasiert, keine vollständige
+**Status: testbare Version (0.3.0).** Regelbasiert, keine vollständige
 deutsche Grammatikprüfung. Firefox-Paket und Chrome-Paket werden aus denselben
 Quelldateien gebaut.
 
