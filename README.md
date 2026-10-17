@@ -22,7 +22,9 @@ Quelldateien gebaut.
 | Studierende, die Mitarbeitenden | Studenten, die Mitarbeiter |
 
 Paarformen und Partizipformen sind standardmäßig aktiv und im Popup separat
-abschaltbar. Die Website-Ausnahme gilt für den exakten Hostnamen (beispielsweise
+abschaltbar. Das Popup zeigt außerdem, wie viele Wörter auf der aktuellen Seite
+ersetzt wurden; die Zahl wird nur beim Öffnen des Popups lokal gezählt. Ist
+Entgendert ausgeschaltet, sind die übrigen Einstellungen gesperrt. Die Website-Ausnahme gilt für den exakten Hostnamen (beispielsweise
 `www.example.org`, nicht automatisch auch für `example.org` oder Subdomains).
 Beim Abschalten werden Originaltexte wiederhergestellt, soweit die Seite sie
 inzwischen nicht selbst geändert hat.

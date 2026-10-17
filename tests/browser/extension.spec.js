@@ -75,6 +75,45 @@ test("Originale wiederherstellen; Seitenänderungen erhalten; erneut einschalten
   await expect(page.locator("#regular")).toHaveText("Lehrer treffen Studenten und Studenten.");
   await popup.close();
 });
+test("Popup: gesperrte Einstellungen im ausgeschalteten Zustand", async () => {
+  const popup = await context.newPage();
+  await popup.goto(`chrome-extension://${extensionId}/popup.html`);
+  await expect(popup.locator("#details")).toBeEnabled();
+  await popup.locator("#enabled").uncheck();
+  await expect(popup.locator("body")).toHaveAttribute("data-state", "off");
+  await expect(popup.locator("#count")).toHaveText("–");
+  await expect(popup.locator("#count-label")).toHaveText("Leseansicht ist ausgeschaltet");
+  for (const id of ["site", "pairs", "participles"]) await expect(popup.locator(`#${id}`)).toBeDisabled();
+  // Clicking a locked option must not change the setting.
+  await popup.locator("#pairs").click({ force: true });
+  await expect(popup.locator("#pairs")).toBeChecked();
+  await popup.locator("#enabled").check();
+  for (const id of ["pairs", "participles"]) await expect(popup.locator(`#${id}`)).toBeEnabled();
+  await popup.close();
+});
+test("Zähler: ersetzte Wörter der Seite, live aktualisiert", async () => {
+  const popup = await context.newPage();
+  await popup.goto(`chrome-extension://${extensionId}/popup.html`);
+  // Opened as a tab, the popup has no activeTab grant; listen to every tab instead.
+  await popup.evaluate(async () => {
+    globalThis.counts = [];
+    for (const tab of await chrome.tabs.query({})) {
+      const port = chrome.tabs.connect(tab.id, { name: "entgendert:status" });
+      port.onMessage.addListener((message) => globalThis.counts.push(message.replaced));
+      port.onDisconnect.addListener(() => void chrome.runtime.lastError);
+    }
+  });
+  const latest = () => popup.evaluate(() => globalThis.counts.at(-1));
+  // 3 regular + 2 pair + 1 dative + 4 articles + 3 lexicon + 2 structure + 2 neutral
+  await expect.poll(latest).toBe(17);
+  await popup.locator("#pairs").uncheck();
+  await expect.poll(latest).toBe(15);
+  await page.locator("#dynamic").evaluate((node) => { node.textContent = "Neue Kolleg*innen und Expert:innen"; });
+  await expect.poll(latest).toBe(17);
+  await popup.locator("#enabled").uncheck();
+  await expect.poll(latest).toBe(0);
+  await popup.close();
+});
 test("Optionen und persistente Website-Ausnahme", async () => {
   const popup = await context.newPage();
   await popup.goto(`chrome-extension://${extensionId}/popup.html`);

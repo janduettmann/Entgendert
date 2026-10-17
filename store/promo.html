@@ -5,15 +5,16 @@
   <title>Entgendert – Store-Grafik</title>
   <style>
     * { box-sizing: border-box; }
-    body { margin: 0; background: #f5f3e9; color: #193d32; font-family: Arial, sans-serif; }
+    body { margin: 0; background: #f4efe3; color: #14302a; font-family: Arial, sans-serif; }
     main { width: 100vw; height: 100vh; padding: 24px 30px; position: relative; overflow: hidden; }
-    header { display: flex; align-items: center; gap: 10px; font-size: 28px; font-weight: 750; letter-spacing: -1px; }
+    header { display: flex; align-items: center; gap: 10px; font: 600 28px Georgia, "DejaVu Serif", serif; letter-spacing: -0.5px; }
     img { width: 46px; height: 46px; margin-left: -6px; }
     h1 { font-size: 31px; line-height: 1.15; letter-spacing: -1px; margin: 20px 0 21px; font-weight: 700; }
-    .example { display: inline-flex; gap: 14px; align-items: center; padding: 10px 17px; background: #224f42; color: #fff; border-radius: 10px; font-size: 17px; }
-    .original { color: #d1ddcf; }
-    .arrow { color: #bcdd9b; }
-    .decoration { position: absolute; height: 260px; width: 260px; border: 1px solid #d3ddc8; border-radius: 50%; right: -172px; top: 30px; box-shadow: 0 0 0 28px #e6ebdb, 0 0 0 29px #d3ddc8; z-index: -1; }
+    .stop { color: #e9a92a; }
+    .example { display: inline-flex; gap: 14px; align-items: center; padding: 10px 17px; background: #1f5c48; color: #fff; border-radius: 10px; font-size: 17px; box-shadow: 0 6px 18px rgb(20 48 42 / 18%); }
+    .original { color: #c9d8cd; text-decoration: line-through; text-decoration-color: #f2b63c; }
+    .arrow { color: #f2b63c; }
+    .decoration { position: absolute; height: 260px; width: 260px; border: 1px solid #ded5bf; border-radius: 50%; right: -172px; top: 30px; box-shadow: 0 0 0 28px #ebe4d3, 0 0 0 29px #ded5bf; z-index: -1; }
     @media (min-width: 700px) {
       main { padding: 65px 100px; }
       header { font-size: 43px; gap: 18px; }
@@ -26,7 +27,7 @@
 </head>
 <body><main>
   <header><img src="/assets/logo.svg" alt="">Entgendert</header>
-  <h1>Weniger Zeichen.<br>Mehr Lesefluss.</h1>
+  <h1>Weniger Zeichen<span class="stop">.</span><br>Mehr Lesefluss<span class="stop">.</span></h1>
   <div class="example"><span class="original">Ärzt:innen</span><span class="arrow">→</span><strong>Ärzte</strong></div>
   <div class="decoration" aria-hidden="true"></div>
 </main></body>

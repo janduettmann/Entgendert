@@ -65,7 +65,8 @@ Hostnamen im lokalen Browserprofil. Kein Cloud-Sync und keine Übertragung.
 ## Begründung: activeTab
 
 Erkennt beim Öffnen des Popups die aktuelle Website, um Entgendert für deren
-Hostnamen ein- oder auszuschalten und den Verarbeitungsstatus anzuzeigen.
+Hostnamen ein- oder auszuschalten, den Verarbeitungsstatus und die Zahl der
+ersetzten Wörter auf dieser Seite anzuzeigen.
 
 ## Begründung: Zugriff auf HTTP- und HTTPS-Seiten / Content-Scripts
 
