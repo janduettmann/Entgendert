@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Entgendert</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header><span class="mark" aria-hidden="true">E.</span><div><h1>Entgendert</h1><p>Deine persönliche Leseansicht.</p></div></header>
+  <main>
+    <label class="primary"><span>Entgendert aktivieren</span><input id="enabled" type="checkbox" role="switch" disabled></label>
+    <section aria-label="Website"><p id="hostname">Aktuelle Website</p><label><span>Auf dieser Website aktiv</span><input id="site" type="checkbox" role="switch" disabled></label></section>
+    <section aria-label="Schreibweisen">
+      <label><span>Paarformen vereinfachen<small>Lehrerinnen und Lehrer → Lehrer</small></span><input id="pairs" type="checkbox" disabled></label>
+      <label><span>Partizipformen ersetzen<small>Studierende → Studenten</small></span><input id="participles" type="checkbox" disabled></label>
+      <p class="hint">Partizipformen können ihre Bedeutung ändern. Satzbau und Grammatik werden nicht vollständig erkannt.</p>
+    </section>
+    <p id="status" role="status" aria-live="polite">Einstellungen werden geladen …</p>
+  </main>
+  <footer>Lokal verarbeitet. Keine Datenübertragung.</footer>
+  <script src="engine.js"></script><script src="popup.js"></script>
+</body>
+</html>

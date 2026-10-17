@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Datenschutzhinweise zur Browser-Erweiterung Entgendert: lokale Verarbeitung ohne Telemetrie oder Datenübertragung durch die Erweiterung.">
+  <title>Entgendert – Datenschutz</title>
+  <style>
+    :root { color-scheme: light; font: 17px/1.75 system-ui, sans-serif; color: #243b30; background: #f5f3ec; }
+    body { max-width: 760px; margin: 0 auto; padding: 48px 24px 70px; }
+    .brand { font-weight: 750; letter-spacing: -.7px; font-size: 24px; }
+    h1 { font-size: clamp(30px, 7vw, 44px); line-height: 1.2; margin: 32px 0 28px; letter-spacing: -1px; }
+    p { margin: 0 0 22px; } code { background: #e6eadc; border-radius: 4px; padding: 2px 5px; font-size: .88em; }
+    a { color: #225f47; text-underline-offset: 3px; } footer { border-top: 1px solid #ccd6c6; margin-top: 35px; padding-top: 20px; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="brand">Entgendert</div>
+  <main><h1>Datenschutzhinweise</h1>
+<p>Entgendert verarbeitet Seitentexte ausschließlich lokal im Browser. Die Erweiterung enthält keine Analysewerkzeuge, Werbung, Telemetrie, externen Dienste oder Netzwerkaufrufe. Weder Texte noch besuchte URLs werden übertragen.</p>
+<p>Globaler Aktivierungsstatus, die beiden Regeloptionen und die manuell deaktivierten Hostnamen werden über <code>storage.local</code> im lokalen Browserprofil gespeichert. Diese Daten werden nicht über <code>storage.sync</code> synchronisiert.</p>
+<p>Originaltexte veränderter Textknoten werden vorübergehend im Arbeitsspeicher gehalten, um die Ansicht zurücksetzen zu können. Entfernte DOM-Knoten werden durch die Speicherung in einer <code>WeakMap</code> nicht dauerhaft festgehalten.</p>
+<p><code>activeTab</code> erlaubt dem Popup, nach dem Anklicken das aktuelle Tab zu erkennen und den Schalter für dessen Website anzuzeigen. Das Content-Script läuft auf HTTP- und HTTPS-Seiten, damit die Leseansicht automatisch funktioniert. Die Erweiterung benötigt deshalb Zugriff auf deren Seiteninhalte.</p>
+<p>Die Leseansicht ändert Textknoten im DOM. Wie jede solche DOM-Änderung kann sie von Skripten der geöffneten Website wahrgenommen werden. Entgendert sendet diese Änderungen selbst an keinen Server.</p>
+<p>Beim Deinstallieren entfernt der Browser die gespeicherten Einstellungen. Bereits geöffnete Seiten bei Bedarf neu laden, um die Originalansicht zu erhalten.</p>
+  <p>Kontakt zum Projekt: <a href="https://github.com/janduettmann/Entgendert/issues">GitHub Issues</a>. Bitte dort keine vertraulichen Seitentexte oder personenbezogenen Daten veröffentlichen.</p>
+  <p>Diese Hinweise betreffen die Erweiterung. Beim Aufruf dieser auf GitHub Pages gehosteten Informationsseite verarbeitet GitHub technische Zugriffsdaten nach seiner <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement">Datenschutzerklärung</a>.</p>
+  </main>
+  <footer>Quellcode und Dokumentation: <a href="https://github.com/janduettmann/Entgendert">Entgendert auf GitHub</a><br>Keine externen Schriften, Analyse-Skripte oder eingebetteten Dienste auf dieser Seite.</footer>
+</body>
+</html>
