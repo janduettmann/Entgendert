@@ -6,19 +6,72 @@
   <title>Entgendert</title>
   <link rel="stylesheet" href="popup.css">
 </head>
-<body>
-  <header><span class="mark" aria-hidden="true">E.</span><div><h1>Entgendert</h1><p>Deine persönliche Leseansicht.</p></div></header>
+<body data-state="loading">
+  <header>
+    <svg class="logo" viewBox="0 0 128 128" aria-hidden="true">
+      <defs>
+        <linearGradient id="page" x1="20" y1="10" x2="108" y2="118" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#27664f"/>
+          <stop offset="1" stop-color="#12342a"/>
+        </linearGradient>
+      </defs>
+      <path d="M38 10H84L116 42V94A24 24 0 0 1 92 118H38A24 24 0 0 1 14 94V34A24 24 0 0 1 38 10Z" fill="url(#page)"/>
+      <path d="M84 10V34A8 8 0 0 0 92 42H116Z" fill="#5f9a7f"/>
+      <g fill="#f8f4e9">
+        <rect x="31" y="34" width="13" height="62" rx="6.5"/>
+        <rect x="31" y="34" width="44" height="13" rx="6.5"/>
+        <rect x="31" y="58.5" width="36" height="13" rx="6.5"/>
+        <rect x="31" y="83" width="40" height="13" rx="6.5"/>
+      </g>
+      <!-- While paused the gender star is visible; while active it becomes a full stop. -->
+      <path class="star" d="M88 78.5v22M78.47 84l19.05 11M78.47 95l19.05-11" stroke="#f2b63c" stroke-width="6" stroke-linecap="round"/>
+      <circle class="stop" cx="88" cy="89.5" r="8.5" fill="#f2b63c"/>
+    </svg>
+    <div class="brand">
+      <h1>Entgendert</h1>
+      <p>Weniger Zeichen. Mehr Lesefluss.</p>
+    </div>
+  </header>
+
   <main>
-    <label class="primary"><span>Entgendert aktivieren</span><input id="enabled" type="checkbox" role="switch" disabled></label>
-    <section aria-label="Website"><p id="hostname">Aktuelle Website</p><label><span>Auf dieser Website aktiv</span><input id="site" type="checkbox" role="switch" disabled></label></section>
-    <section aria-label="Schreibweisen">
-      <label><span>Paarformen vereinfachen<small>Lehrerinnen und Lehrer → Lehrer</small></span><input id="pairs" type="checkbox" disabled></label>
-      <label><span>Partizipformen ersetzen<small>Studierende → Studenten</small></span><input id="participles" type="checkbox" disabled></label>
-      <p class="hint">Partizipformen können ihre Bedeutung ändern. Satzbau und Grammatik werden nicht vollständig erkannt.</p>
+    <section class="card hero" aria-label="Leseansicht">
+      <label class="row">
+        <span class="text"><strong>Leseansicht <span id="badge" class="badge" aria-hidden="true">…</span></strong><small id="summary">Einstellungen werden geladen …</small></span>
+        <span class="switch"><input id="enabled" type="checkbox" role="switch" disabled><span class="track" aria-hidden="true"></span></span>
+      </label>
+      <p class="counter"><span id="count" class="count">–</span><span id="count-label" class="count-label">Wird gezählt …</span></p>
     </section>
+
+    <!-- Disabled as a whole while the main switch is off. -->
+    <fieldset id="details">
+      <h2>Diese Website</h2>
+      <div class="card">
+        <label class="row">
+          <span class="text"><strong id="hostname">Aktuelle Website</strong><small>Auf dieser Website aktiv</small></span>
+          <span class="switch"><input id="site" type="checkbox" role="switch" disabled><span class="track" aria-hidden="true"></span></span>
+        </label>
+      </div>
+      <h2>Schreibweisen</h2>
+      <div class="card">
+        <label class="row">
+          <span class="text"><strong>Paarformen vereinfachen</strong><small>Lehrerinnen und Lehrer → Lehrer</small></span>
+          <span class="switch"><input id="pairs" type="checkbox" role="switch" disabled><span class="track" aria-hidden="true"></span></span>
+        </label>
+        <label class="row">
+          <span class="text"><strong>Partizipformen ersetzen</strong><small>Studierende → Studenten</small></span>
+          <span class="switch"><input id="participles" type="checkbox" role="switch" disabled><span class="track" aria-hidden="true"></span></span>
+        </label>
+        <p class="hint">Partizipformen können ihre Bedeutung ändern. Satzbau und Grammatik werden nicht vollständig erkannt.</p>
+      </div>
+    </fieldset>
+
     <p id="status" role="status" aria-live="polite">Einstellungen werden geladen …</p>
   </main>
-  <footer>Lokal verarbeitet. Keine Datenübertragung.</footer>
+
+  <footer>
+    <span class="local"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 7V5.5a3.5 3.5 0 0 1 7 0V7M3.5 7h9v6.5h-9z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>Lokal verarbeitet · keine Datenübertragung</span>
+    <span id="version"></span>
+  </footer>
   <script src="engine.js"></script><script src="popup.js"></script>
 </body>
 </html>

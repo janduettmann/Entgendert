@@ -1,6 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
   <title>Entgendert</title>
-  <rect x="16" y="16" width="96" height="96" rx="25" fill="#224f42"/>
-  <path d="M38 38h39v10H49v11h24v10H49v11h28v10H38V38Z" fill="#f8faf2"/>
-  <circle cx="91" cy="85" r="5" fill="#bcdd9b"/>
+  <defs>
+    <linearGradient id="page" x1="20" y1="10" x2="108" y2="118" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#27664f"/>
+      <stop offset="1" stop-color="#12342a"/>
+    </linearGradient>
+  </defs>
+  <!-- A page with a folded corner: the reading view -->
+  <path d="M38 10H84L116 42V94A24 24 0 0 1 92 118H38A24 24 0 0 1 14 94V34A24 24 0 0 1 38 10Z" fill="url(#page)"/>
+  <path d="M84 10V34A8 8 0 0 0 92 42H116Z" fill="#5f9a7f"/>
+  <!-- An "E" made of three lines of text -->
+  <g fill="#f8f4e9">
+    <rect x="31" y="34" width="13" height="62" rx="6.5"/>
+    <rect x="31" y="34" width="44" height="13" rx="6.5"/>
+    <rect x="31" y="58.5" width="36" height="13" rx="6.5"/>
+    <rect x="31" y="83" width="40" height="13" rx="6.5"/>
+  </g>
+  <!-- The full stop that replaces the gender star -->
+  <circle cx="88" cy="89.5" r="8.5" fill="#f2b63c"/>
 </svg>

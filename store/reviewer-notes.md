@@ -9,7 +9,9 @@ modifies text nodes only. Original text is retained in a WeakMap for restoring
 the view. Inputs, editable areas, code blocks, explicit non-German language
 regions, and opted-out elements are excluded. Settings and user-selected host
 exceptions are stored in storage.local. activeTab is used by the popup for the
-current website control.
+current website control and to show how many words were replaced on the page;
+that count is computed locally in the content script and only while the popup
+is open.
 
 ## Reproduce
 
